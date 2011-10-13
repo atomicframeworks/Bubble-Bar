@@ -1,0 +1,63 @@
+/* icon container */
+.icon {
+	float:left;
+}
+
+/* icon image */
+.icon img {
+	position:relative;
+	height:50px;
+	left:24px;
+	top:-5px;
+	z-index:2;
+}
+
+.icon a {
+	//position:relative;
+	//height:50px;
+	width:200px;
+	//left:24px;
+	//top:0px;
+	z-index:0;
+}
+
+/* The icon's shadow */
+.icon:before {
+	position:relative;
+	width:100px;
+	top:50px;
+	z-index:2;
+	content: url('../img/shadow.png');
+} 
+
+/* Hover on image */
+.icon img:hover {
+	top:-10px;
+	cursor: pointer;
+}
+
+/* 100 pixels per column. 3 columns wide is width:300; */
+.menuColumns {
+	width:100;
+	height:auto;
+	float:left
+	z-index:1;
+
+}
+
+/* Floating menu container */
+.menu {
+	position:absolute;  
+    width:auto;
+    height:auto;
+    min-height: 65px;
+    top:25px;
+    left:10px;
+    //bottom:25px;
+    //padding:15px;
+    background:aqua;  
+    //border:2px solid #2266AA;  
+    z-index:100;
+
+}
+
