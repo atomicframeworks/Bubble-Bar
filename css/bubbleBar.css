@@ -1,3 +1,13 @@
+/* look at 
+	nick-fisher.com
+
+
+-webkit-transform .3s ease-in
+
+
+ */
+
+
 /* Icons container */
 .icon {
 	float:left;
@@ -11,19 +21,6 @@
 		Used to adjust starting height of icon set in the menu
 	*/
 	top:-20px;
-}
-
-
-/* Icon image */
-.icon img {
-	position:relative;
-	height:50px;
-	
-	/* Used to align icon with shadow center */
-	left:24px;
-	
-	/* top position will hover the icon */
-	//top:0px;
 }
 
 /* The icon's shadow */
@@ -44,7 +41,30 @@
 	-webkit-box-reflect:below -1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(white));
 }
 
-/* Hover on image */
+
+/* Icon image */
+.icon img {
+	position:relative;
+	height:50px;
+	
+	/* Used to align icon with shadow center */
+	left:24px;
+	
+	/* top position will hover the icon */
+	//top:0px;
+
+}
+
+/* CSS Transition - Controls the speed of the transition when :hover */
+.icon img {	
+	transition: top, .3s;
+	-moz-transition: top .3s; /* Firefox 4 */
+	-webkit-transition: top .3s; /* Safari and Chrome */
+	-o-transition: top .3s; /* Opera */
+}
+
+
+/* Icon image hover */
 .icon img:hover {
 	//position:relative;
 
@@ -55,7 +75,8 @@
 	//left:35px;
 
 	cursor: pointer;
-}
+	
+	}
 
 /* Columns container - Used to force a width and create columns
  100 pixels per column. 3 columns wide is width:300; */
@@ -84,7 +105,7 @@
     /* Extra cushion in the menu to center the icons */
     padding-bottom:10px;
     
-    /* Set above our layers */
+    /* Set above our other layers */
     z-index:5;
     
     //background:aqua;  
@@ -92,7 +113,5 @@
     //border:2px solid #2266AA;  
  	//min-height: 65px;
     //padding:5px;
-
-
 }
 
