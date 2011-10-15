@@ -2,6 +2,12 @@
 .icon {
 	float:left;
 	
+	/* position: 
+		relative = Expanded Icons 
+		absolute = collapsed Icons
+	*/
+	position:relative;
+	
 	/* Padding between icons.
 		Used to adjust height to allow for reflection when vertically placed 
 	*/
