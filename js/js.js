@@ -1,54 +1,46 @@
 $(document).ready(function() {
+	var breaks;
+	var time = 77;
 
-	var time =75;
-
-	$('.icon').css("position",'absolute');
 	
-	var lock = false;
-	//$('.icon').css("position",'relative');
-	
-	var selectorMenu = '.menu';
-
-
-	var selectorIconInner = '.iconInner';
-	
-	var selectorIconInnerA = '.iconInner a';
-
-	var lock = false;
-
-	var selectorReverse = $('.icon').get().reverse();
-
-	var selectorIconReverse = $('.icon').get().reverse();
-
-	var selectorImg = '.icon img';
-	var selectorColumns = '.menuColumns';
-	
+	//The menu container
+	var selectorMenu = '.menu';	
 	//Icon selector
 	var selectorIcon = '.icon';
+	//Icon selector reversed
+	var selectorIconReverse = $(selectorIcon).get().reverse();
+	lock = false;
 
-	//Hide icons
-	$(selectorIcon).each(function(i) {
+	$(selectorIcon).css("position",'relative');
+	//Start Hide icons
+	var bbIconLen = $(selectorIcon).length;
+	$(selectorIcon).each(function(i) {		
 		if (i === 0){
 			//console.log('first element');
+			//Skip the hiding by returning
 			return;
+		}		
+		if (i+1 === bbIconLen){
+			//console.log('Last element');
+			//return;
 		}
-			var el = $(this);
-			//console.log(1);
-			el.hide();
+		var el = $(this);
+		el.hide();
 	});
-
+	//End Hide icons
+	
 	
 	$(selectorMenu).bind('mouseenter',	function(e){
-		console.log('Mouse enter');
-		breaks = false;
-		moveThings(selectorIcon);
+		//console.log('Mouse enter');
+		breaks = 'enter';
+		moveThingsEnter(selectorIcon);
 	});
 
 
 	$(selectorMenu).bind('mouseleave',	function(e){
-		console.log('Mouse leave');
-		breaks = true;
-		moveThings(selectorIconReverse);
+		//console.log('Mouse leave');
+		breaks = 'leave';
+		moveThingsLeave(selectorIconReverse,'leave');
 	});
 
 
@@ -67,89 +59,154 @@ $(document).ready(function() {
 
 
     menuPosition=$(menuVar).position().top;
-	console.log('init pos: '+menuPosition);
+	//console.log('init pos: '+menuPosition);
 
+function moveThingsLeave(selector,breaks){
 
-
-function moveThings(selector){
-		if (lock === true){
-			console.log('locked');
-			return;		
-		};
-		//lock was here
-		//console.log();
 		var x = $(selector).length;
-		//console.log(selectorLen);
 		$(selector).each(function(i) {
 		    var el = $(this);
-			//console.log(x);
-			//console.log(i);
-			
+	
 		    setTimeout(function() {
-			if (i === 0){
-				//console.log('first element');
-				lock=true;
-				console.log('Locking');
-				//var fade = false;
-				fade = 'first';
-				//return;
-			}
-			if (i+1 === x){
-				//console.log('last element');
-				lock=false;
-				console.log('Unlocking');
-				var fade = 'last';
-				
-				//return;
-			}
-
+		    
+		    if (breaks == 'enter'){
+			    	console.log('breaking enter');
+			    	//breaks = false;
+			    	return false; 	
+			    }else{
+				if (i === 0){
+					//console.log('First element');
+					fade = 'first';
+					//return;
+				}
+				if (i+1 === x){
+					//console.log('Last element');
+					var fade = 'last';
+					//return;
+				}
 			
-			
-		    //Collapsed
-		    if (el.css("position") === "absolute"){
-		    		el.css("position","relative");
-		    		
-		    		el.fadeIn(time*2, function() {
-    					// Animation complete.
-
-  					});
-		    		//el.css("position","relative");
-		    		//el.fadeIn(time*2);
-			    	//el.css("z-index","");
-
-		    	} //EXPANDED !!
+			    //Collapsed
+			    if (el.css("position") === "absolute"){
+			    		el.css("position","relative");
+			    		
+			    		el.fadeIn(time*2, function() {
+	    					// Animation complete.
+	
+	  					});
+			  	} //Expanded
 		    	else if (el.css("position") === "relative"){
-			    	//el.css("z-index","");
-			    	
 			    	if (fade == 'last'){
 			    		el.css("position","absolute");
-			    	}else{
+			    	}
+			    	else{
 			    	
-			    	el.fadeOut(time*2, function() {
-    					// Animation complete.
-    					el.css("position","absolute");
-
-  					});
-  					
-  					}
-
-		    	}
+			    		el.fadeOut(time*2, function() {
+							// Animation complete.
+							el.css("position","absolute");
+						});	
+					}
+		    	}}
 		    }, time*i);
 		});	
+}
+
+
+function moveThingsEnter(selector){
+		//breaks = false;
 		
-		//console.log(lock);
-	
+		if (lock === true){
+			console.log('locked');
+			//return;		
+		};
+		var x = $(selector).length;
+		$(selector).each(function(i) {
+		    var el = $(this);
+		    		    
+		    setTimeout(function() {
+		    	
+			    if (breaks == 'leave'){
+			    	console.log('breaking enter');
+			    	//breaks = false;
+			    	return false; 	
+			    }else{
+			    	console.log(breaks);
+				    
+					if (i === 0){
+						//console.log('first element');
+						lock=true;
+						console.log('Locking');
+						fade = 'first';
+					}
+					if (i+1 === x){
+						//console.log('last element');
+						lock=false;
+						console.log('Unlocking');
+						var fade = 'last';
+					}
+					
+					el.css("position","relative");
+				    
+				    el.fadeIn(time*2, function() {
+		    			// Animation complete.
+		    		});
+	    	}	
+    	// End timeout each function	
+		}, time*i);
+	//End for each $(selector)	
+	});		
 	if (lock === true){
 		console.log('locked: '+lock);
-		//lock=false;
-		//return;
-		//moveThings(selector);
-
-		//console.log(lock);
-
 	}
-	//lock=false;
+}
 
+function moveThingsLeave(selector){
+		if (lock === true){
+			//console.log('locked');
+			//return;
+			//breaks = false;		
+		};
+		var x = $(selector).length;
+		$(selector).each(function(i) {
+		    var el = $(this);
+		    		  
+		    setTimeout(function() {
+		    	if (breaks == 'enter'){
+			    	console.log('breaking leave');
+			    	//breaks = false;
+			    	return false; 	
+			    }else{
+			    	console.log(breaks);
+				    	
+					if (i === 0){
+						//console.log('first element');
+						lock=true;
+						console.log('Locking');
+						fade = 'first';
+					}
+					if (i+1 === x){
+						//console.log('last element');
+						lock=false;
+						console.log('Unlocking');
+						var fade = 'last';
+					}
+					//If we are on last element
+					if (fade == 'last'){
+					    //el.css("position","absolute");
+					}
+					else{
+						el.fadeOut(time*2, function() {
+		    				// Animation complete.
+		    				el.css("position","absolute");
+		  				});
+		  			}
+	  			}
+			// End timeout each function	
+		    }, time*i);
+		//End for each $(selector)	
+		});
+	if (lock === true){
+		//console.log('locked: '+lock);
+	}
 }
 
 
@@ -163,31 +220,16 @@ function cancelEvent(e) {
     }
 }
 
-	function FloatMenu(){
-	
-	
-	    var scrollAmount=$(document).scrollTop();
-	    var newPosition=menuPosition+scrollAmount;
-	    
-	    console.log('new pos: '+newPosition);
-		//$(menu).css("top",newPosition);
-	    
-	    //console.log(menu);
-	    $('.menu').animate({top: newPosition},70,'swing');
-
-	    /*
-if($(window).height()<$fl_menu.height()+$fl_menu_menu.height()){
-	        $fl_menu.css("top",menuPosition);
-	    }
-	    else {
-	        $fl_menu.stop().animate({top: newPosition}, $float_speed, $float_easing);
-	    }
-*/
-	}
+function FloatMenu(){	
+	var scrollAmount=$(document).scrollTop();
+	var newPosition=menuPosition+scrollAmount;
+	//console.log('new pos: '+newPosition);	    
+	$('.menu').animate({top: newPosition},70,'swing');
+}
 
 
 
-
+//End document ready
 });
 
 

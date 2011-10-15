@@ -1,63 +1,98 @@
-/* icon container */
+/* Icons container */
 .icon {
 	float:left;
+	
+	/* Padding between icons.
+		Used to adjust height to allow for reflection when vertically placed 
+	*/
+	padding-top:20px;
+		
+	/* Position of icons in menu.
+		Used to adjust starting height of icon set in the menu
+	*/
+	top:-20px;
 }
 
-/* icon image */
+
+/* Icon image */
 .icon img {
 	position:relative;
 	height:50px;
+	
+	/* Used to align icon with shadow center */
 	left:24px;
-	top:-5px;
-	z-index:2;
-}
-
-.icon a {
-	//position:relative;
-	//height:50px;
-	width:200px;
-	//left:24px;
+	
+	/* top position will hover the icon */
 	//top:0px;
-	z-index:0;
 }
 
 /* The icon's shadow */
 .icon:before {
 	position:relative;
-	width:100px;
-	top:50px;
-	z-index:2;
+	
+	/* top 
+		Used to align the shadow with the image bottom
+	*/
+	top:55px;
+	
+	/* The shadow location */
 	content: url('../img/shadow.png');
-} 
+}
+
+/* The icon's reflection */
+.icon {
+	-webkit-box-reflect:below -1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(white));
+}
 
 /* Hover on image */
 .icon img:hover {
+	//position:relative;
+
+	/* top - Vertical Hover Distance */
 	top:-10px;
+	
+	/* top - Horizontal Hover Distance */
+	//left:35px;
+
 	cursor: pointer;
 }
 
-/* 100 pixels per column. 3 columns wide is width:300; */
+/* Columns container - Used to force a width and create columns
+ 100 pixels per column. 3 columns wide is width:300; */
 .menuColumns {
 	width:100;
 	height:auto;
 	float:left
 	z-index:1;
-
 }
 
 /* Floating menu container */
 .menu {
 	position:absolute;  
+    
+    /* width height - auto
+    	 To extend the menu as icons are added or removed
+    */
     width:auto;
     height:auto;
-    min-height: 65px;
+    
+	/* top - Vertical position of menu */
     top:25px;
+  	/* left - Horizontal position of menu */
     left:10px;
+    
+    /* Extra cushion in the menu to center the icons */
+    padding-bottom:10px;
+    
+    /* Set above our layers */
+    z-index:5;
+    
+    //background:aqua;  
     //bottom:25px;
-    //padding:15px;
-    background:aqua;  
     //border:2px solid #2266AA;  
-    z-index:100;
+ 	//min-height: 65px;
+    //padding:5px;
+
 
 }
 
