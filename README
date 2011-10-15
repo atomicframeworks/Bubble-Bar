@@ -1,4 +1,6 @@
-A liquid OSX inspired menu bar designed for the web. Featuring rich CSS & JavaScript using minimal HTML markup. Designed to be extremely flexible & extensible. 
+Bubble Bar-
+
+A liquid OSX inspired menu bar designed for the web. Featuring rich CSS & JavaScript using minimal HTML markup. Designed to be extremely flexible & extensible. Bubble Bar will also fallback cleanly. If JavaScript is disabled the menu will still display in a stylish & useable format.
 
 Features:
 	Floating Menu Bar
@@ -7,6 +9,6 @@ Features:
 	Icon Hover Transitions
 	Parallax Reflections & Drop Shadows
 	
-Bubble Bar will also fallback cleanly. If JavaScript is disabled the menu will still display in a stylish & useable format.
+
 
 	
