@@ -11,8 +11,6 @@ $(document).ready(function() {
 	var selectorIconReverse = $(selectorIcon).get().reverse();
 	lock = false;
 
-	//Collapse Icons
-	$(selectorIcon).css("position",'absolute');
 	
 	//Start Hide icons
 	var bbIconLen = $(selectorIcon).length;
@@ -28,6 +26,8 @@ $(document).ready(function() {
 		}
 		var el = $(this);
 		el.hide();
+		//Collapse Icons
+		el.css("position",'absolute');
 	});
 	//End Hide icons
 	
