@@ -27,7 +27,6 @@
 		Used to align the shadow with the image bottom
 	*/
 	top:55px;
-	
 	/* The shadow location */
 	content: url('../img/shadow.png');
 }
@@ -47,16 +46,14 @@
 	left:24px;
 	
 	/* top position will hover the icon */
-	//top:0px;
-
+	top:0px;
 }
-
 /* CSS Transition - Controls the speed of the transition when :hover */
-.icon img {	
-	transition: top, .3s;
+.icon img {
+	transition: top .3s;
 	-moz-transition: top .3s; /* Firefox 4 */
 	-webkit-transition: top .3s; /* Safari and Chrome */
-	-o-transition: top .3s; /* Opera */
+	-o-transition: top .3s; /* Opera */	
 }
 
 
