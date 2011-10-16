@@ -56,6 +56,9 @@ $(document).ready(function() {
 	var floatSpeed = 100;
 	var floatEasing = 0;
 	
+	menuPosition=$(menuVar).position().top;
+	//console.log('init pos: '+menuPosition);
+	
 	// Bind Window scroll to update float
 	$(window).scroll(function () {
 	    FloatMenu();
